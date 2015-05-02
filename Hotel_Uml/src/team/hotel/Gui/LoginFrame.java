@@ -1,14 +1,23 @@
 package team.hotel.Gui;
 import java.awt.BorderLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import team.hotel.action.ReceptionistAction;
+import team.hotel.bean.Admin;
 
 
 /**
@@ -30,6 +39,8 @@ public class LoginFrame extends javax.swing.JFrame {
 	private JLabel l_password;
 	private ButtonGroup group_01;
 	private JPanel radiogroup;
+	private JButton canel_button;
+	private JButton login_button;
 	private JRadioButton admin_02;
 	private JRadioButton admin_01;
 	private JLabel l_username;
@@ -106,6 +117,95 @@ public class LoginFrame extends javax.swing.JFrame {
 							radiogroup.add(admin_02);
 							admin_02.setText("\u804c\u5de5");
 						}
+					}
+					{
+						login_button = new JButton();
+						mainPanel.add(login_button);
+						login_button.setText("jButton1");
+						login_button.setBounds(51, 231, 62, 24);
+						login_button.addMouseListener(new MouseAdapter() {
+							public void mouseClicked(MouseEvent evt) {
+								//JOptionPane.showMessageDialog(null, "请输入用户名！");
+								//System.out.println("login_button.mouseClicked, event="+evt);
+								//TODO add your code for login_button.mouseClicked
+							/*
+							 * 登陆相关
+							 * 
+							 * */
+								Admin admin = new Admin();
+								
+								if(admin_01.isSelected())
+								{
+									admin.setAdminType(0);
+								}
+								else if(admin_02.isSelected())
+								{
+									admin.setAdminType(1);
+								}
+								else
+								{
+									JOptionPane.showMessageDialog(null, "请选择登陆类型！");
+									return;
+								}
+								if ((username.getText()) == null
+										|| (username.getText().trim()).equals("")) {
+									JOptionPane.showMessageDialog(null, "请输入用户名！");
+									return;
+								}else
+								{
+									admin.setAdminName(username.getText().toString());
+								}
+
+								if ((password.getText()) == null
+										|| password.getText().trim().equals("")) {
+									JOptionPane.showMessageDialog(null, "请输入密码！");
+									return;
+								}else
+								{
+									admin.setPassword(password.getText().toString());
+								}
+								
+								if(admin.getAdminType()==1)
+								{
+									admin = new ReceptionistAction().ReceptionistLoginView(admin);
+								}
+								else
+								{
+									JOptionPane.showMessageDialog(null, "暂未开通");
+									//admin = new ReceptionistAction().ReceptionistLoginView(admin);
+								}
+								
+								
+								if(admin.getPassword()!=null)
+								{
+									JOptionPane.showMessageDialog(null, "登陆成功");
+								}
+
+								
+								
+								
+
+								
+							}
+						});
+						login_button.addKeyListener(new KeyAdapter() {
+							public void keyReleased(KeyEvent evt) {
+								try {
+									finalize();
+								} catch (Throwable e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								System.out.println("login_button.keyReleased, event="+evt);
+								//TODO add your code for login_button.keyReleased
+							}
+						});
+					}
+					{
+						canel_button = new JButton();
+						mainPanel.add(canel_button);
+						canel_button.setText("jButton1");
+						canel_button.setBounds(176, 231, 62, 24);
 					}
 				}
 			}

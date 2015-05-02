@@ -5,6 +5,6 @@ import team.hotel.bean.Receptionist;
 
 public interface ReceptionistService {
 
-	public Receptionist AdminLogin (Receptionist receptionist);
+	public Admin AdminLogin (Admin admin);
 
 }

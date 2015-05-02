@@ -8,10 +8,11 @@ import team.hotel.dao.tools.WerunDao;
 
 public class RceptionistDaoImpl extends WerunDao implements RecetionistDao{
 
+
 	@Override
-	public Receptionist getReceptionistByName(String name) {
+	public Admin getReceptionistByName(String name) {
 		// TODO Auto-generated method stub
-		return (Receptionist) getSingleObject("receptionist",Receptionist.class,new NameValue("reName",name));
+		return (Receptionist) getSingleObject("receptionist",Receptionist.class,new NameValue("username",name));
 
 		
 	}

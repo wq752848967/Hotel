@@ -5,6 +5,8 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
+    <bean id="recetionistDao" class="team.hotel.dao.impl.RceptionistDaoImpl"></bean>
+    <bean id="receptionistService" class="team.hotel.service.impl.ReceptionistServiceImpl"></bean>
     <bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>

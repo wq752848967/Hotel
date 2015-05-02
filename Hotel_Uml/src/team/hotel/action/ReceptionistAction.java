@@ -8,12 +8,12 @@ import team.hotel.service.ReceptionistService;
 public class ReceptionistAction {
 
 	ReceptionistService receptionistService;
-	public Receptionist ReceptionistLoginView(Receptionist receptionist) {
+	public Admin ReceptionistLoginView(Admin admin) {
 		receptionistService = (ReceptionistService) BeanFactroy.getBeanByName("receptionistService");
 		
-		receptionist = (Receptionist) receptionistService.AdminLogin(receptionist);
+		admin = (Admin) receptionistService.AdminLogin(admin);
 		
-		return receptionist;
+		return admin;
 	}
 
 }

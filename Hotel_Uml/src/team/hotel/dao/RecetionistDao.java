@@ -8,6 +8,6 @@ public interface RecetionistDao {
 	/*
 	 * 根据name获取对象
 	 * */
-	public Receptionist getReceptionistByName(String name);
+	public Admin getReceptionistByName(String name);
 	
 }
